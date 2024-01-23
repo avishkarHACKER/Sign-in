@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Search</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0F0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #login-box {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #username, #password, #login-button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            background-color: #444;
+            border-radius: 5px;
+            color: #0F0;
+        }
+
+        #login-button {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #login-button:hover {
+            background-color: #0F0;
+            color: #000;
+        }
+
+        #login-success {
+            color: #0F0;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="login-box">
+            <h2>AV-SEARCH LOGIN</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <!-- Remove the 'a' tag wrapper to prevent opening the link on incorrect credentials -->
+            <button id="login-button"><span>LOGIN</span></button>
+
+            <div id="login-success">Login successful!</div>
+        </div>
+    </div>
+    <script>
+        const loginButton = document.getElementById("login-button");
+        const loginForm = document.getElementById("login-box");
+        const loginSuccess = document.getElementById("login-success");
+
+        loginButton.addEventListener("click", function() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check if the username and password are correct
+            if (username === "AVISHKAR" && password === "avishkar") {
+                // Open google.com on successful login
+                window.location.href = "https://avishkarhacker.github.io/Advanced-Search-Engine/";
+            } else {
+                loginSuccess.style.display = "block";
+                loginSuccess.innerHTML = "Wrong username or password!";
+            }
+        });
+    </script>
+</body>
+</html>
