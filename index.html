@@ -47,7 +47,7 @@
             color: #000;
         }
 
-        #login-success {
+        #login-success, #login-error {
             color: #0F0;
             display: none;
             margin-top: 10px;
@@ -64,24 +64,37 @@
             <button id="login-button"><span>LOGIN</span></button>
 
             <div id="login-success">Login successful!</div>
+            <div id="login-error"></div>
         </div>
     </div>
     <script>
         const loginButton = document.getElementById("login-button");
-        const loginForm = document.getElementById("login-box");
         const loginSuccess = document.getElementById("login-success");
+        const loginError = document.getElementById("login-error");
 
-        loginButton.addEventListener("click", function() {
+        loginButton.addEventListener("click", function () {
+            // Clear previous error messages
+            loginSuccess.style.display = "none";
+            loginError.style.display = "none";
+
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
             // Check if the username and password are correct
             if (username === "AVISHKAR" && password === "avishkar") {
-                // Open google.com on successful login
-                window.location.href = "https://avishkarhacker.github.io/Advanced-Search-Engine/";
-            } else {
+                // Display success message
                 loginSuccess.style.display = "block";
-                loginSuccess.innerHTML = "Wrong username or password!";
+                loginSuccess.innerHTML = "Login successful!";
+
+                // Wait for 2 seconds before opening the link
+                setTimeout(function () {
+                    // Open the link
+                    window.location.href = "https://avishkarhacker.github.io/Advanced-Search-Engine/";
+                }, 2000);
+            } else {
+                // Display error message
+                loginError.style.display = "block";
+                loginError.innerHTML = "Wrong username or password!";
             }
         });
     </script>
