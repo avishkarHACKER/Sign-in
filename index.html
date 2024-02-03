@@ -69,14 +69,11 @@
     </div>
     <script>
         const loginButton = document.getElementById("login-button");
+        const loginForm = document.getElementById("login-box");
         const loginSuccess = document.getElementById("login-success");
         const loginError = document.getElementById("login-error");
 
         loginButton.addEventListener("click", function () {
-            // Clear previous error messages
-            loginSuccess.style.display = "none";
-            loginError.style.display = "none";
-
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
@@ -91,10 +88,21 @@
                     // Open the link
                     window.location.href = "https://avishkarhacker.github.io/Advanced-Search-Engine/";
                 }, 2000);
-            } else {
-                // Display error message
+
+            } else if (username === "AVISHKAR" && password !== "avishkar") {
+                // Display wrong password message
                 loginError.style.display = "block";
-                loginError.innerHTML = "Wrong username or password!";
+                loginError.innerHTML = "Wrong password!";
+
+            } else if (username !== "AVISHKAR" && password === "avishkar") {
+                // Display wrong username message
+                loginError.style.display = "block";
+                loginError.innerHTML = "Wrong username!";
+
+            } else {
+                // Display wrong username and password message
+                loginError.style.display = "block";
+                loginError.innerHTML = "Wrong username and password!";
             }
         });
     </script>
